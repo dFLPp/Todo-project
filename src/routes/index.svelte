@@ -12,7 +12,7 @@
     <input type="text" name="tap-first-insert" aria-label="Add item" placeholder="tap do add a item">
 </form>
 
-<TodoItem />
-<TodoItem />
-<TodoItem />
+<TodoItem/>
+<TodoItem/>
+<TodoItem/>
 

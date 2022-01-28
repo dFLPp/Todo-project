@@ -1,25 +1,15 @@
 import type { RequestHandler } from "@sveltejs/kit";
+import { api } from "./_api";
 
-let todos: Todo[] = [];
-
-export const get: RequestHandler = () => {
-  return {
-    status: 200,
-    body: todos
-  }
+export const get: RequestHandler = (request) => {
+  return api(request);
 }
 
 export const post: RequestHandler<{}, FormData> = (request) => {
-  todos.push({
+  return api(request, {
+    uid: `${Date.now()}`, //fazer um uid melhor para evitar confitos
     created_at: new Date(),
     content: request.body.get("tap-first-insert"),
     done: false
   });
-
-  return {
-    status: 303,
-    headers: {
-      location: "/"
-    }
-  }
 }

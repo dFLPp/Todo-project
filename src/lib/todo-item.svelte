@@ -18,8 +18,8 @@
     }
 
     .list-item button{
-        width: 2em;
-        height: 2em;
+        width: 2rem;
+        height: 2rem;
         border: none;
         background-color: transparent;
         background-position: 50% 50%;
@@ -78,23 +78,22 @@
         opacity: .5;
     }
 
-    /* TODO: Uncomment when the API endpoints are available
   .finished {
-    transform: none;
     opacity: 0.4;
     filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.1));
   }
   
   .finished .status {
+    background-color: black;
     background-image: url("data:image/svg+xml,%3Csvg width='22' height='16' viewBox='0 0 22 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.5 1.5L7.4375 14.5L1.5 8.5909' stroke='%23676778' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  } */
+  }
 
 </style>
 
-<div class="list-item">
-    <form action="" method="">
-        <input type="hidden" name="check-state" value="">
-        <button aria-label="check done/ not done" class="status"></button>
+<div class="list-item" class:finished={todo.done}>
+    <form action="/todos/{todo.uid}.json?_method=patch" method="post">
+        <input type="hidden" name="check-state" value="{todo.done ? '' : true}">
+        <button aria-label="check todo as todo.done ? 'On progress' : 'Finished' " class="status"></button>
     </form>
 
     <form action="/todos/{todo.uid}.json?_method=patch" method="post" class="text-section">

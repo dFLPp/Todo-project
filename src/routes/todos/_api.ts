@@ -23,15 +23,18 @@ export const api = (request: Request, data?: Record<string, unknown>) => {
       status: 200;
       break;
     
-    case "PATCH":
-      todos = todos.map(todo => {
-        if (todo.uid === request.params.uid){
-          todo.content = data.content as string;
-        }
-        return todo;
-      });
-      status = 200;
-      break;
+      case "PATCH":
+        todos = todos.map(todo => {
+          if (todo.uid === request.params.uid){
+            if (data.content){
+              todo.content = data.content as string;
+            }
+            else { todo.done = data.done as boolean}
+          }
+          return todo;
+        });
+        status = 200;
+        break;
       
     default:
       break;

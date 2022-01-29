@@ -97,8 +97,8 @@
         <button aria-label="check done/ not done" class="status"></button>
     </form>
 
-    <form action="" method="" class="text-section">
-        <input  class="text-space" type="text" style="border: none;" value="{todo.content}"/>
+    <form action="/todos/{todo.uid}.json?_method=patch" method="post" class="text-section">
+        <input  class="text-space" name="content" type="text" style="border: none;" value="{todo.content}"/>
         <button aria-label="save item" class="save-button"></button>
     </form>
 
